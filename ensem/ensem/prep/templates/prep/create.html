@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Ensem - Préparation</title>
+    <link rel="stylesheet" type="text/css" href="/css/ensem.css">
+</head>
+
+<body>
+    <div class="create-article">
+        <h1>Upload Paper</h1>
+        <form class="site-form" id="create-form" method="POST" action="{% url 'prep:create' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ form }}
+            <button type="submit" id="submit-btn">Upload</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('create-form').addEventListener('submit', function(event) {
+            var numField = document.getElementById('id_num'); // Assuming the field name is 'num'
+
+            if (parseInt(numField.value) > 100) {
+                event.preventDefault(); // Prevent form submission
+                alert("Number cannot be more than 100");
+            }
+        });
+    </script>
+</body>
+</html>

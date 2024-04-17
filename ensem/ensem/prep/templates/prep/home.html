@@ -1,0 +1,18 @@
+<h1>HELOOO</h1>
+<h1>HELOOO</h1>
+
+<div>
+    {% for p in prep %} 
+
+    <h3>{{ p.name }}</h3>
+    <p>{{ p.description }}</p>
+    <p>{{ p.created_at }}</p>
+    <form action="{% url 'prep:delete' name=p.name %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="delete-btn">Delete</button>
+    </form>
+    
+    {% endfor %}
+</div>
+
+<a href="{% url 'prep:create' %}">Create</a>
